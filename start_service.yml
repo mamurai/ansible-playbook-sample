@@ -1,6 +1,7 @@
 ---
 - name: 
   hosts: all
+  gather_facts: false
   become: true
   tasks:
   - name: Start and Enable Service "{{ svc_name }}"

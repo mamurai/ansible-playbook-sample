@@ -1,6 +1,7 @@
 ---
 - name: 
   hosts: all
+  gather_facts: false
   become: true
   tasks:
   - name: Stop Service "{{ svc_name }}"
