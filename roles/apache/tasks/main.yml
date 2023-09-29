@@ -1,0 +1,29 @@
+---
+# tasks file for apache
+- name: install package "{{ pkg_name }}"
+  ansible.builtin.dnf:
+    name: "{{ pkg_name }}"
+    state: latest
+
+- name: Start and Enable Service "{{ svc_name }}"
+  ansible.builtin.service:
+    name: "{{ svc_name }}"
+    state: started
+    enabled: true
+
+
+- name: Open Firewall protocol "{{ prt_name }}"
+  ansible.posix.firewalld:
+    service: "{{ prt_name }}"
+    permanent: true
+    state: enabled
+    immediate: true
+    
+
+- name: create index.html from template to "{{ web_file }}"
+  ansible.builtin.template:
+    src: templates/index.html.j2
+    dest: "{{ web_file }}"
+    owner: root
+    group: root
+    mode: 0644

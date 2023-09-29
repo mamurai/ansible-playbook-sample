@@ -1,0 +1,10 @@
+---
+- name: 
+  hosts: all
+  become: true
+  tasks:
+  - name: Start and Enable Service "{{ svc_name }}"
+    ansible.builtin.service:
+      name: "{{ svc_name }}"
+      state: started
+      enabled: true

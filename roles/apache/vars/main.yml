@@ -1,0 +1,6 @@
+---
+# vars file for apache
+pkg_name: httpd
+svc_name: httpd
+prt_name: http
+web_file: /var/www/html/index.html
